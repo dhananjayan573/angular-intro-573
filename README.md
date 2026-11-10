@@ -50,15 +50,3 @@ Each step has one responsibility: the router selects a screen, the component han
 | --- | --- | --- |
 | `/architecture` | `ArchitecturePageComponent` | Main interactive lesson |
 | `/routing-example` | `RoutingExampleComponent` | Simple URL-to-component routing demonstration |
-
-## Discussion prompts
-
-1. Why is the app bootstrapped from `main.ts` instead of an NgModule?
-2. Which responsibilities belong in a component versus a service?
-3. How does `@for (layer of layers; track layer.name)` improve on a structural `*ngFor` example?
-4. What happens after `Router.navigate(['/routing-example'])` runs?
-5. Where would a real `HttpClient` request belong in this structure?
-
-## Tech notes
-
-The project uses modern Angular standalone APIs and Angular control-flow syntax. It is designed for explanation and exploration rather than production API integration.
