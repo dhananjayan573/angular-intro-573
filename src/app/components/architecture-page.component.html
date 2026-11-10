@@ -1,0 +1,98 @@
+<main class="page">
+<section class="hero">
+  <p class="eyebrow">Interactive learning lab</p>
+  <h1>Angular architecture,<br /><span>made visible.</span></h1>
+  <p class="lede">
+    Trace a request from the browser into standalone components, injected services,
+    state, routing, and the HTTP boundary.
+  </p>
+  <div class="status">
+    <i></i>
+    <span>Reactive state · {{ store.layers().length }} layers online</span>
+  </div>
+</section>
+
+<section class="grid">
+  <div class="panel rail">
+    <div class="heading">
+      <b>01</b>
+      <div>
+        <h2>Application flow</h2>
+        <p>Choose a layer to inspect it.</p>
+      </div>
+    </div>
+
+    @for (layer of store.layers(); track layer.name) {
+      <button
+        class="layer"
+        [class.active]="store.selectedName() === layer.name"
+        [style.--accent]="layer.accent"
+        (click)="store.select(layer.name)"
+      >
+        <span>{{ layer.name }}</span>
+        <small>{{ layer.file }}</small>
+        <em>→</em>
+      </button>
+    }
+  </div>
+
+  <article class="panel inspector" [style.--accent]="store.selected().accent">
+    <p class="label">NOW INSPECTING</p>
+    <div class="number">0{{ store.layers().indexOf(store.selected()) + 1 }}</div>
+    <h2>{{ store.selected().name }}</h2>
+    <p class="summary">{{ store.selected().summary }}</p>
+    <div class="callout">{{ store.selected().detail }}</div>
+    <button class="action" (click)="refresh()">↻ Simulate data refresh</button>
+    <button class="action route-action" (click)="openRoutingExample()">
+      Open routing example →
+    </button>
+    <p class="message" aria-live="polite">{{ message() }}</p>
+
+    @if (store.selectedName() === 'Routing') {
+      <p class="route-note">
+        Try the button above to navigate programmatically to <code>/routing-example</code>.
+      </p>
+    }
+  </article>
+</section>
+
+<section class="panel flow">
+  <div class="heading">
+    <b>02</b>
+    <div>
+      <h2>One modern Angular request</h2>
+      <p>Each boundary has one clear responsibility.</p>
+    </div>
+  </div>
+  <div class="nodes">
+    <div class="node teal"><strong>Browser</strong><small>URL / click</small></div>
+    <span>→</span>
+    <div class="node blue"><strong>Router</strong><small>screen match</small></div>
+    <span>→</span>
+    <div class="node yellow"><strong>Component</strong><small>template + binding</small></div>
+    <span>→</span>
+    <div class="node coral"><strong>Service</strong><small>DI + logic</small></div>
+    <span>→</span>
+    <div class="node purple"><strong>HTTP / API</strong><small>data boundary</small></div>
+  </div>
+  <p class="return">Response → service updates a signal → Angular refreshes the affected UI.</p>
+</section>
+
+<section class="cards">
+  <article class="panel card">
+    <b>⌘</b>
+    <h3>Templates & binding</h3>
+    <p>Templates display data and react to property, event, and two-way binding.</p>
+  </article>
+  <article class="panel card">
+    <b>⌁</b>
+    <h3>Project structure</h3>
+    <p><code>src/main.ts</code> boots the app; routes, features, services, and styles grow in clear boundaries.</p>
+  </article>
+  <article class="panel card">
+    <b>✓</b>
+    <h3>Key takeaway</h3>
+    <p>Keep UI focused, share logic through services, and make data flow predictable.</p>
+  </article>
+</section>
+</main>

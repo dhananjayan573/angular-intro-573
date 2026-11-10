@@ -1,0 +1,23 @@
+<main class="page">
+<section class="hero">
+  <p class="eyebrow">Router example</p>
+  <h1>One URL, <span>one screen.</span></h1>
+  <p class="lede">
+    Routes map a URL to a standalone component. This screen lives at
+    <code>/routing-example</code>.
+  </p>
+</section>
+
+<section class="panel route-card">
+  <p class="label">app.routes.ts</p>
+  <pre><code>const routes: Routes = [
+{{ '{' }} path: 'architecture', component: ArchitecturePageComponent {{ '}' }},
+{{ '{' }} path: 'routing-example', component: RoutingExampleComponent {{ '}' }}
+];</code></pre>
+  <p>
+    The router matches the URL and renders the selected component inside
+    <code>&lt;router-outlet&gt;</code>.
+  </p>
+  <a class="action" routerLink="/architecture">← Back to architecture map</a>
+</section>
+</main>
