@@ -29,7 +29,10 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": { "development": { "buildTarget": "angular-architecture-demo:build:development" } },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4300
+          }
         }
       }
     }
